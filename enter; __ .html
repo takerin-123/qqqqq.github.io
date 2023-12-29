@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center; /* 追加 */
+            gap: 10px;
+            color: red; /* 文字色を赤色に変更 */
+        }
+        #searchBox {
+            width: 300px; /* 200px * 1.5 */
+            height: 30px; /* 20px * 1.5 */
+            border: 1px solid red; /* ボーダーを赤色に変更 */
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        #searchBox:focus {
+            outline: none; /* 青い線を非表示にする */
+        }
+        #engineSelect {
+            width: 112.5px; /* 150px * 0.75 */
+            height: 30px; /* 20px * 1.5 */
+            border: 1px solid red; /* ボーダーを赤色に変更 */
+            border-radius: 15px; /* 楕円形にするために変更 */
+            font-size: 16px;
+            order: -1; /* Move to the left side */
+            color: black; /* 文字色を黒色に変更 */
+        }
+        #engineSelect:focus {
+            outline: none; /* 青い線を非表示にする */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="searchBox" placeholder="Search..." />
+        <select id="engineSelect">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+            <option value="https://www.baidu.com/s?wd=">百度</option>
+            <option value="https://www.yandex.com/search/?text=">Yandex</option>
+            <option value="https://www.ecosia.org/search?q=">Ecosia</option>
+            <option value="https://www.startpage.com/do/dsearch?query=">Startpage</option>
+        </select>
+    </div>
+    <script>
+        document.getElementById('searchBox').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var searchEngine = document.getElementById('engineSelect').value;
+                var query = this.value;
+                window.open(searchEngine + query, '_self');
+            }
+        });
+    </script>
+</body>
+</html>
